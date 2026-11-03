@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Cofre del Tesoro Ortográfico - Módulo 1</title>
+    <link rel="stylesheet" href="estilos_tesoro.css">
+</head>
+<body>
+
+    <header class="hero-tesoro">
+        <!-- Lluvia de emojis de tesoro en la cabecera -->
+        <div id="lluvia-tesoro"></div>
+
+        <div class="hero-content">
+            <h1>🪙 El Cofre del Tesoro Ortográfico</h1>
+            <p>Clasifica palabras agudas, graves y esdrújulas para abrir el cofre sagrado del templo pirata.</p>
+        </div>
+    </header>
+
+    <main class="contenido-tesoro">
+        <div class="navegacion-superior">
+            <a href="index.html" class="boton-volver">⬅️ Volver al Inicio</a>
+        </div>
+
+        <!-- HUD con Vidas, Reloj y Barra de Tiempo Visual -->
+        <div class="hud-juego oculto" id="hud-juego-container">
+            <div class="hud-datos-fila">
+                <span id="contador-vidas">Vidas: 💖💖💖</span>
+                <span id="temporizador">⏱️ 15s</span>
+                <span class="marcador-tesoros">Tesoro <span id="num-tesoro">1</span>/<span id="total-tesoros">9</span></span>
+            </div>
+            <!-- Barra de Tiempo Visual -->
+            <div class="contenedor-tiempo-tesoro">
+                <div class="barra-tiempo-tesoro" id="barra-tiempo-tesoro"></div>
+            </div>
+        </div>
+
+        <!-- ESTRUCTURA DEL TEMPLO PIRATA -->
+        <div class="marco-tesoro">
+            <div class="techo-tesoro">
+                <span>🏴‍☠️ SALÓN DEL COFRE SAGRADO 🪙</span>
+            </div>
+
+            <div class="zona-juego-tesoro" id="contenedor-juego-tesoro">
+                <div class="pantalla-inicio-tesoro">
+                    <h3>🗺️ Mapa del Tesoro</h3>
+                    <p class="instruccion-tesoro">
+                        Para abrir el cofre sagrado debes clasificar correctamente cada palabra en su categoría correspondiente: <b>Aguda, Grave o Esdrújula</b>.
+                    </p>
+                    <div class="reglas-caja-tesoro">
+                        <p>💖 Tienes <b>3 vidas</b> para toda la travesía.</p>
+                        <p>🛡️ Consigue una racha de <b>3 aciertos seguidos</b> para activar un <b>Escudo de Corazones</b>.</p>
+                        <p>⏱️ Tienes <b>15 segundos</b> por cada palabra.</p>
+                    </div>
+                    <button onclick="comenzarTesoro()" class="btn-comenzar-animado">
+                        🏴‍☠️ ¡Zarpar hacia el Tesoro! 🏴‍☠️
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insignias / Logros del Tesoro -->
+        <section class="seccion-retos-tesoro">
+            <h3>🎯 Logros de Navegación</h3>
+            <div class="tarjetas-retos-grid">
+                <div class="tarjeta-reto" id="tarjeta-reto-pirata">
+                    <div class="icono-reto">🪙</div>
+                    <div>
+                        <h4>Capitán Impecable</h4>
+                        <p>Completa el juego sin perder ninguna vida.</p>
+                        <span id="status-pirata" class="status-pendiente">⏳ Pendiente</span>
+                    </div>
+                </div>
+                <div class="tarjeta-reto" id="tarjeta-reto-veloz">
+                    <div class="icono-reto">⛵</div>
+                    <div>
+                        <h4>Navegante Veloz</h4>
+                        <p>Supera todos los tesoros sin agotar el tiempo.</p>
+                        <span id="status-veloz" class="status-pendiente">⏳ Pendiente</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto de Grado - Minijuego: El Cofre del Tesoro Ortográfico</p>
+    </footer>
+
+    <script src="juego_tesoro.js"></script>
+</body>
+</html>

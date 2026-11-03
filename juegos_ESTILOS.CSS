@@ -1,0 +1,147 @@
+/* ==========================================
+   ESTILOS EXCLUSIVOS PARA LA PÁGINA DE JUEGOS
+   ========================================== */
+body {
+    background: #0f172a; /* Fondo oscuro espacial */
+    color: #f8fafc;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Botón para regresar a la página principal */
+.btn-regresar {
+    display: inline-block;
+    background: #334155;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn-regresar:hover {
+    background: #475569;
+}
+
+/* Encabezado Espacial */
+.header-juegos {
+    text-align: center;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+    margin-bottom: 30px;
+}
+
+/* Contenedor Arcade */
+.juego-arcade-box {
+    background: #1e1b4b;
+    border: 3px solid #8b5cf6;
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.marcador-puntos {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.pregunta-alien {
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    border-left: 4px solid #a855f7;
+}
+
+.opciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.boton-opcion-juego {
+    background: #312e81;
+    color: white;
+    border: 2px solid #6366f1;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.boton-opcion-juego:hover {
+    background: #4f46e5;
+    transform: scale(1.03);
+}
+
+/* Vitrina de Trofeos en la página de juegos */
+.contenedor-vitrina {
+    background: #1e293b;
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.grid-trofeos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tarjeta-trofeo {
+    background: #0f172a;
+    border: 2px dashed #475569;
+    border-radius: 14px;
+    padding: 15px;
+    opacity: 0.5;
+}
+
+.tarjeta-trofeo.desbloqueado {
+    opacity: 1;
+    background: #312e81;
+    border: 2px solid #f59e0b;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+/* Botón de Reintentar Estilo Arcade */
+.btn-reintentar {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-reintentar:hover {
+    transform: scale(1.08) rotate(-2deg);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 6px 15px rgba(245, 158, 11, 0.6);
+}
+
+.btn-reintentar:active {
+    transform: scale(0.95);
+}

@@ -1,0 +1,272 @@
+/* ==========================================
+   ESTILOS EXCLUSIVOS: PÁGINA PRINCIPAL
+   ========================================== */
+
+/* 1. CONFIGURACIÓN GENERAL Y FONDO */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: #333;
+}
+
+/* 2. BANNER PRINCIPAL (HERO) */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #1e3c72, #2980b9, #2ecc71, #27ae60);
+    background-size: 400% 400%;
+    animation: animarFondo 8s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hero p {
+    color: #f1f1f1;
+    font-size: 1.15rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes animarFondo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 3. BARRA DE ESTADÍSTICAS / LOGROS */
+.barra-estadisticas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: -25px auto 30px auto;
+    max-width: 900px;
+    position: relative;
+    z-index: 10;
+    padding: 0 15px;
+}
+
+.caja-dato {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    color: #2d3436;
+    border: 2px solid #e2e8f0;
+}
+
+.caja-dato .num {
+    font-size: 1.8rem;
+    color: #4a90e2;
+}
+
+/* 4. MASCOTA GUÍA (LULO EL BÚHO) */
+.seccion-mascota {
+    max-width: 900px;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #ffffff, #f0f7ff);
+    border: 2px solid #74b9ff;
+    border-radius: 16px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.avatar-mascota {
+    font-size: 3.5rem;
+    background: #ffeaa7;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: flotar 3s ease-in-out infinite;
+}
+
+.mensaje-mascota h3 {
+    margin: 0 0 5px 0;
+    color: #0984e3;
+}
+
+.mensaje-mascota p {
+    margin: 0;
+    color: #636e72;
+    font-size: 1rem;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* 5. TARJETAS DE MÓDULOS */
+.contenedor-modulos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta-modulo {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 300px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-modulo:hover {
+    transform: translateY(-10px);
+}
+
+.tarjeta-modulo .icono {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.tarjeta-modulo h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+}
+
+.tarjeta-modulo.completado {
+    border: 3px solid #2ecc71 !important;
+    background-color: #f0fff4 !important;
+    box-shadow: 0 6px 18px rgba(46, 204, 113, 0.3) !important;
+}
+
+.etiqueta-completado {
+    background-color: #2ecc71;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff7675;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.boton:hover {
+    background-color: #d63031;
+}
+
+/* 6. ANIMACIÓN LLUVIA DE LETRAS */
+#lluvia-letras {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.letra-cayendo {
+    position: absolute;
+    top: -30px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+    user-select: none;
+    animation: caerYGirar linear forwards;
+}
+
+@keyframes caerYGirar {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(280px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 7. PIE DE PÁGINA */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    font-size: 0.9rem;
+}
+/* TARJETA DATO CURIOSO (Para la página principal) */
+.caja-dato-curioso {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff9db;
+    border-left: 6px solid #f1c40f;
+    padding: 20px 25px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.caja-dato-curioso h4 {
+    margin: 0 0 8px 0;
+    color: #d35400;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.caja-dato-curioso p {
+    margin: 0;
+    color: #4a4a4a;
+    line-height: 1.5;
+}
+/* Animación del cursor de máquina de escribir */
+.cursor-maquina {
+    font-weight: bold;
+    color: #0984e3;
+    animation: parpadeo 1s step-end infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

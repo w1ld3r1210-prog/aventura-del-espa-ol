@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Retos - Aventura del Español</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contenedor-retos {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .cabecera-retos {
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .grid-retos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tarjeta-reto {
+            background-color: #ffffff;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .tarjeta-reto.completada {
+            background-color: #ecfdf5;
+            border: 2px solid #10b981;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .icono-reto {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .titulo-reto {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .descripcion-reto {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .estado-reto {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #64748b;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .tarjeta-reto.completada .estado-reto {
+            background-color: #10b981;
+            color: #ffffff;
+        }
+
+        .btn-volver {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .btn-volver:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-color: #f8fafc;">
+
+    <div class="contenedor-retos">
+        <a href="index.html" class="btn-volver">⬅️ Volver a la página principal</a>
+
+        <div class="cabecera-retos">
+            <h1 style="margin: 0; font-size: 2.2rem;">🎯 Central de Retos</h1>
+            <p style="margin-top: 10px; font-size: 1.1rem; color: #cbd5e1;">Aquí puedes ver todas las misiones ocultas de los módulos y minijuegos. ¡Píntalas todas de verde!</p>
+        </div>
+
+        <div class="grid-retos">
+            
+            <!-- Reto 1: Módulo 1 -->
+            <div id="reto-1" class="tarjeta-reto">
+                <span class="icono-reto">📍</span>
+                <h3 class="titulo-reto">Maestro de Acentos</h3>
+                <p class="descripcion-reto">Lee y completa el Módulo 1 sobre el mapa de los acentos.</p>
+                <span id="estado-1" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 2: Módulo 2 -->
+            <div id="reto-2" class="tarjeta-reto">
+                <span class="icono-reto">🛑</span>
+                <h3 class="titulo-reto">Señales de Lectura</h3>
+                <p class="descripcion-reto">Completa la lectura y misión del Módulo 2 sobre puntuación.</p>
+                <span id="estado-2" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 3: Juego Marciano -->
+            <div id="reto-3" class="tarjeta-reto">
+                <span class="icono-reto">👽</span>
+                <h3 class="titulo-reto">Cazador de Aliens</h3>
+                <p class="descripcion-reto">Supera todos los niveles del Juego del Marciano sin perder todas tus vidas.</p>
+                <span id="estado-3" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 4: Velocista de las Letras -->
+            <div id="reto-4" class="tarjeta-reto">
+                <span class="icono-reto">⚡</span>
+                <h3 class="titulo-reto">Velocista de las Letras</h3>
+                <p class="descripcion-reto">Gana el Juego del Marciano acumulando 100 puntos o más.</p>
+                <span id="estado-4" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 5: Escáner Detective - Ojo de Halcón -->
+            <div id="reto-5" class="tarjeta-reto">
+                <span class="icono-reto">🔍</span>
+                <h3 class="titulo-reto">Ojo de Halcón</h3>
+                <p class="descripcion-reto">Completa el Escáner Detective sin perder ninguna vida.</p>
+                <span id="estado-5" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 6: Escáner Detective - Detective Relámpago -->
+            <div id="reto-6" class="tarjeta-reto">
+                <span class="icono-reto">⏱️</span>
+                <h3 class="titulo-reto">Detective Relámpago</h3>
+                <p class="descripcion-reto">Supera todos los casos del detective sin que se agote el tiempo.</p>
+                <span id="estado-6" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 7: Cofre del Tesoro - Capitán Impecable -->
+            <div id="reto-7" class="tarjeta-reto">
+                <span class="icono-reto">🪙</span>
+                <h3 class="titulo-reto">Capitán Impecable</h3>
+                <p class="descripcion-reto">Completa el juego del Tesoro Ortográfico sin perder ninguna vida.</p>
+                <span id="estado-7" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 8: Cofre del Tesoro - Navegante Veloz -->
+            <div id="reto-8" class="tarjeta-reto">
+                <span class="icono-reto">⛵</span>
+                <h3 class="titulo-reto">Navegante Veloz</h3>
+                <p class="descripcion-reto">Supera todos los tesoros sin agotar el tiempo de clasificación.</p>
+                <span id="estado-8" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 9: Explorador de la Selva - Expedición Legendaria -->
+            <div id="reto-9" class="tarjeta-reto">
+                <span class="icono-reto">🌿</span>
+                <h3 class="titulo-reto">Expedición Legendaria</h3>
+                <p class="descripcion-reto">Completa el juego del Explorador de la Selva sin perder ninguna vida.</p>
+                <span id="estado-9" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 10: Explorador de la Selva - Caminante Veloz -->
+            <div id="reto-10" class="tarjeta-reto">
+                <span class="icono-reto">🌴</span>
+                <h3 class="titulo-reto">Caminante Veloz</h3>
+                <p class="descripcion-reto">Supera todos los templos de la selva sin que se agote el tiempo.</p>
+                <span id="estado-10" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 11: Guardián de los Signos - Sabio Supremo -->
+            <div id="reto-11" class="tarjeta-reto">
+                <span class="icono-reto">📜</span>
+                <h3 class="titulo-reto">Sabio Supremo</h3>
+                <p class="descripcion-reto">Completa el juicio del Guardián sin perder ninguna vida.</p>
+                <span id="estado-11" class="estado-reto">⏳ Pendiente</span>
+            </div>
+
+            <!-- Reto 12: Guardián de los Signos - Juicio Veloz -->
+            <div id="reto-12" class="tarjeta-reto">
+                <span class="icono-reto">⚡</span>
+                <h3 class="titulo-reto">Juicio Veloz</h3>
+                <p class="descripcion-reto">Supera las misiones del Guardián sin agotar el tiempo.</p>
+                <span id="estado-12" class="estado-reto">⏳ Pendiente</span>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            function marcarComoCompletado(idTarjeta, idEstado) {
+                const tarjeta = document.getElementById(idTarjeta);
+                const estado = document.getElementById(idEstado);
+                
+                if (tarjeta && estado) {
+                    tarjeta.classList.add("completada");
+                    estado.innerHTML = "✅ Completado";
+                }
+            }
+
+            // 1. Módulo 1
+            if (localStorage.getItem("modulo1_completado") === "true" || sessionStorage.getItem("modulo1_completado") === "true") {
+                marcarComoCompletado("reto-1", "estado-1");
+            }
+
+            // 2. Módulo 2
+            if (localStorage.getItem("modulo2_completado") === "true") {
+                marcarComoCompletado("reto-2", "estado-2");
+            }
+
+            // 3. Juego Marciano (Cazador de Aliens)
+            if (localStorage.getItem("trofeo_alien_completado") === "true") {
+                marcarComoCompletado("reto-3", "estado-3");
+            }
+
+            // 4. Juego Marciano (Velocista de las Letras)
+            if (localStorage.getItem("trofeo_velocidad_completado") === "true") {
+                marcarComoCompletado("reto-4", "estado-4");
+            }
+
+            // 5. Escáner Detective (Ojo de Halcón)
+            if (localStorage.getItem("retos_detective_perfecto") === "true") {
+                marcarComoCompletado("reto-5", "estado-5");
+            }
+
+            // 6. Escáner Detective (Detective Relámpago)
+            if (localStorage.getItem("retos_detective_veloz") === "true") {
+                marcarComoCompletado("reto-6", "estado-6");
+            }
+
+            // 7. Cofre del Tesoro (Capitán Impecable)
+            if (localStorage.getItem("retos_tesoro_pirata") === "true") {
+                marcarComoCompletado("reto-7", "estado-7");
+            }
+
+            // 8. Cofre del Tesoro (Navegante Veloz)
+            if (localStorage.getItem("retos_tesoro_veloz") === "true") {
+                marcarComoCompletado("reto-8", "estado-8");
+            }
+
+            // 9. Explorador de la Selva (Expedición Legendaria)
+            if (localStorage.getItem("retos_explorador_experto") === "true") {
+                marcarComoCompletado("reto-9", "estado-9");
+            }
+
+            // 10. Explorador de la Selva (Caminante Veloz)
+            if (localStorage.getItem("retos_explorador_veloz") === "true") {
+                marcarComoCompletado("reto-10", "estado-10");
+            }
+
+            // 11. Guardián de los Signos (Sabio Supremo)
+            if (localStorage.getItem("retos_guardian_sabio") === "true") {
+                marcarComoCompletado("reto-11", "estado-11");
+            }
+
+            // 12. Guardián de los Signos (Juicio Veloz)
+            if (localStorage.getItem("retos_guardian_agudo") === "true") {
+                marcarComoCompletado("reto-12", "estado-12");
+            }
+
+        });
+    </script>
+
+</body>
+</html>

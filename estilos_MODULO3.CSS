@@ -1,0 +1,335 @@
+/* ==========================================
+   ESTILOS EXCLUSIVOS: MÓDULO 3 (RASCACIELOS)
+   ========================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: #333;
+}
+
+.hero-modulo {
+    background: linear-gradient(-45deg, #f59e0b, #d97706, #fbbf24, #ea580c);
+    background-size: 300% 300%;
+    animation: animarFondo 7s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.hero-modulo h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hero-modulo p {
+    color: #fef3c7;
+    font-size: 1.15rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes animarFondo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.boton-volver {
+    display: inline-block;
+    text-decoration: none;
+    color: #d97706;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.boton-volver:hover {
+    text-decoration: underline;
+}
+
+.contenido-lectura {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.regla-ortografica h2 { color: #2d3436; }
+.regla-ortografica h3 { color: #f59e0b; margin-top: 25px; }
+
+blockquote {
+    background-color: #fffbeb;
+    border-left: 5px solid #f59e0b;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.video-aprendizaje {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    width: 90%;
+    max-width: 680px;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background-color: #000;
+}
+
+.video-aprendizaje iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#btn-iniciar-m3 {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 16px 36px;
+    border: 3px solid #fde68a;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#btn-iniciar-m3:hover {
+    transform: scale(1.08) translateY(-4px);
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    box-shadow: 0 12px 30px rgba(245, 158, 11, 0.6);
+    border-color: #fef3c7;
+}
+
+.zona-juego {
+    border: 3px solid #f59e0b;
+    background: linear-gradient(135deg, #ffffff 0%, #fffbeb 50%, #fef3c7 100%);
+    padding: 30px 25px;
+    border-radius: 20px;
+    margin-top: 35px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15);
+}
+
+.pantalla-juego {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #fde68a;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.info-juego h3 {
+    margin: 0;
+    color: #d97706;
+    font-size: 1.4rem;
+}
+
+.instruccion {
+    font-size: 0.95rem;
+    color: #636e72;
+}
+
+/* ==========================================
+   ESTILO REAL DE EDIFICIO / RASCACIELOS
+   ========================================== */
+.rascacielos-container {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    border: 4px solid #475569;
+    border-radius: 14px;
+    padding: 20px;
+    max-width: 460px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+.techo-edificio {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #ffffff;
+    text-align: center;
+    font-weight: 800;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 15px -20px;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.base-edificio {
+    height: 18px;
+    background: #475569;
+    margin: 15px -20px -20px -20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.piso-torre {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.piso-torre:hover {
+    background: #ffffff;
+    border-color: #f59e0b;
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(245, 158, 11, 0.25);
+}
+
+.etiqueta-piso {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #b45309;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.contenido-piso {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #64748b;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-piso.ocupado {
+    color: #9a3412;
+    background: #ffedd5;
+    border-radius: 6px;
+    padding: 5px;
+    border: 1px solid #fed7aa;
+}
+
+.herramientas-juego {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.btn-bloque-palabra {
+    background: linear-gradient(135deg, #fef3c7, #ffedd5);
+    border: 2px solid #fbbf24;
+    color: #b45309;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.15);
+    transition: all 0.25s ease;
+}
+
+.btn-bloque-palabra:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #fde68a, #fed7aa);
+}
+
+.btn-bloque-palabra.seleccionado {
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+    color: white;
+    border-color: #ffffff;
+    box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+    transform: scale(1.05);
+}
+
+.boton-verificar {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    transition: all 0.2s ease;
+}
+
+.boton-verificar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.mensaje-alerta {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.tarjeta-victoria-m3 {
+    text-align: center;
+    padding: 25px 15px;
+    background: white;
+    border-radius: 16px;
+    border: 3px solid #10b981;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+}
+
+.btn-final-inicio {
+    background: linear-gradient(135deg, #10b981, #047857);
+    color: white;
+    text-decoration: none;
+    padding: 15px 32px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+}
+
+.btn-final-inicio:hover {
+    transform: scale(1.06) translateY(-2px);
+}
+
+@keyframes aparecerEfecto {
+    0% { transform: scale(0.7) translateY(-20px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.aparecer-frase {
+    animation: aparecerEfecto 0.5s ease-out forwards;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    font-size: 0.9rem;
+}

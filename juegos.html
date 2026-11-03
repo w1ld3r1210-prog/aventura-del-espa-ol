@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Ortográfico - Misión Alienígena</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            color: white;
+            text-align: center;
+        }
+
+        .contenedor-juegos {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Sección de Retos (Antes Vitrina de Trofeos) */
+        .seccion-trofeos {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .grid-trofeos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tarjeta-trofeo {
+            background: #f8f9fa;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 15px;
+            width: 180px;
+            text-align: center;
+            opacity: 0.4;
+            transition: all 0.3s ease;
+        }
+
+        .tarjeta-trofeo.desbloqueado {
+            opacity: 1;
+            border: 2px solid #f1c40f;
+            background: #fffdf0;
+            box-shadow: 0 4px 12px rgba(241, 196, 15, 0.25);
+            transform: scale(1.03);
+        }
+
+        .tarjeta-trofeo .emoji-trofeo {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Área del Juego del Marciano */
+        .arena-juego {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            position: relative;
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .arena-juego.juego-completado {
+            background: linear-gradient(135deg, #059669, #10b981);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .encabezado-juego {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .encabezado-juego.completado-texto {
+            justify-content: center;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .avatar-alien {
+            font-size: 5rem;
+            margin: 10px 0;
+            animation: flotarAlien 3s ease-in-out infinite;
+        }
+
+        @keyframes flotarAlien {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .bocadillo-alien {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 18px 24px;
+            border-radius: 18px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 15px auto;
+            max-width: 650px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .contenedor-tiempo {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 14px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .barra-tiempo {
+            height: 100%;
+            width: 100%;
+            background: #10b981;
+            transition: width 1s linear, background-color 0.3s;
+        }
+
+        .grid-opciones {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px 0 15px 0;
+        }
+
+        .btn-opcion-palabra {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: #ffffff;
+            border: 2px solid #60a5fa;
+            padding: 14px 28px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            transition: transform 0.2s, background 0.2s, opacity 0.2s;
+            min-width: 140px;
+        }
+
+        .btn-opcion-palabra:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.04);
+            background: linear-gradient(135deg, #60a5fa, #2563eb);
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.6);
+        }
+
+        .btn-opcion-palabra:disabled {
+            background: #64748b;
+            border-color: #94a3b8;
+            opacity: 0.4;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .caja-acciones {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .boton-juego {
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            color: #ffffff;
+        }
+
+        .boton-pista { background-color: #6366f1; }
+        .boton-pista:hover:not(:disabled) { background-color: #4f46e5; transform: translateY(-2px); }
+        .boton-reintentar { background-color: #ef4444; }
+        .boton-reintentar:hover { background-color: #dc2626; transform: translateY(-2px); }
+
+        .caja-retroalimentacion {
+            display: none;
+            margin-top: 18px;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .caja-retroalimentacion.correcta {
+            background-color: rgba(255, 255, 255, 0.25);
+            border: 1px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .caja-retroalimentacion.incorrecta {
+            background-color: rgba(239, 68, 68, 0.25);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+        }
+
+        .boton-volver {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero" style="padding: 30px 20px;">
+        <div class="hero-content">
+            <h1>🎮 Arcade Ortográfico</h1>
+            <p>¡Supera retos divertidos y ayuda a tus amigos intergalácticos!</p>
+        </div>
+    </header>
+
+    <div class="contenedor-juegos">
+        <a href="index.html" class="boton-volver">⬅️ Volver al Inicio</a>
+
+        <section class="seccion-trofeos">
+            <h2>🎯 Tus Retos (<span id="contador-trofeos">0</span>/3)</h2>
+            <p>Supera estas misiones para sumar un trofeo a tu progreso global:</p>
+            <div class="grid-trofeos">
+                <div id="trofeo-mod1" class="tarjeta-trofeo">
+                    <span class="emoji-trofeo">📍</span>
+                    <strong>Maestro de Acentos</strong>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">Completa el Módulo 1</p>
+                </div>
+
+                <div id="trofeo-alien" class="tarjeta-trofeo">
+                    <span class="emoji-trofeo">👽</span>
+                    <strong>Cazador de Aliens</strong>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">Juego del Marciano Superado</p>
+                </div>
+
+                <div id="trofeo-velocidad" class="tarjeta-trofeo">
+                    <span class="emoji-trofeo">⚡</span>
+                    <strong>Velocista de las Letras</strong>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">Supera el juego con +100 puntos</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="zona-juego" class="arena-juego">
+            <div id="encabezado-dinamico" class="encabezado-juego"></div>
+            <div id="alien-avatar" class="avatar-alien">👽</div>
+            <div class="bocadillo-alien">
+                <span id="mensaje-alien">Cargando misión...</span>
+            </div>
+            <div class="contenedor-tiempo">
+                <div id="barra-tiempo" class="barra-tiempo"></div>
+            </div>
+            <div id="contenedor-opciones" class="grid-opciones"></div>
+            <div class="caja-acciones">
+                <button id="btn-pista-juego" class="boton-juego boton-pista" onclick="usarPista()">💡 Pista</button>
+                <button class="boton-juego boton-reintentar" onclick="reintentarJuego()">🔄 Reintentar</button>
+            </div>
+            <div id="caja-feedback" class="caja-retroalimentacion"></div>
+        </section>
+    </div>
+
+    <script>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function iniciarAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        }
+
+        function tocarSonido(tipo) {
+            iniciarAudio();
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            const ahora = audioCtx.currentTime;
+
+            if (tipo === 'acierto') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, ahora);
+                osc.frequency.setValueAtTime(659.25, ahora + 0.08);
+                gain.gain.setValueAtTime(0.15, ahora);
+                gain.gain.exponentialRampToValueAtTime(0.001, ahora + 0.35);
+                osc.start(ahora);
+                osc.stop(ahora + 0.35);
+            } else if (tipo === 'victoria') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, ahora);
+                osc.frequency.setValueAtTime(783.99, ahora + 0.12);
+                osc.frequency.setValueAtTime(1046.50, ahora + 0.24);
+                gain.gain.setValueAtTime(0.2, ahora);
+                gain.gain.exponentialRampToValueAtTime(0.001, ahora + 0.6);
+                osc.start(ahora);
+                osc.stop(ahora + 0.6);
+            } else {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, ahora);
+                osc.frequency.linearRampToValueAtTime(80, ahora + 0.25);
+                gain.gain.setValueAtTime(0.2, ahora);
+                gain.gain.exponentialRampToValueAtTime(0.001, ahora + 0.25);
+                osc.start(ahora);
+                osc.stop(ahora + 0.25);
+            }
+        }
+
+        const bancoBasePreguntas = [
+            { fraseIncompleta: "El marciano _____ un pastel verde.", opciones: ["comio", "comió", "cómio"], correcta: "comió", pista: "Lleva tilde por ser palabra aguda terminada en vocal.", regla: "¡Excelente! 'Comió' lleva tilde en la 'ó'." },
+            { fraseIncompleta: "Ayer _____ la luna en nave.", opciones: ["vicitamos", "visitamos", "bisitamos"], correcta: "visitamos", pista: "Se escribe con 'v' y con 's'.", regla: "¡Bien! 'Visitamos' va con S, no con C." },
+            { fraseIncompleta: "No _____ si podré volver a mi planeta.", opciones: ["se", "sé", "ce"], correcta: "sé", pista: "'Sé' del verbo saber lleva tilde diacrítica.", regla: "¡Increíble! Corregiste la tilde diacrítica de 'sé'." },
+            { fraseIncompleta: "La nave _____ una falla en el motor.", opciones: ["tubo", "tuvo", "tubó"], correcta: "tuvo", pista: "Del verbo tener, se escribe con 'v'.", regla: "¡Correcto! 'Tuvo' (del verbo tener) va con V." },
+            { fraseIncompleta: "Me gusta comprender la _____.", opciones: ["gramatica", "gramática", "gramatíca"], correcta: "gramática", pista: "Lleva tilde por ser esdrújula.", regla: "¡Súper! 'gramática' es esdrújula." },
+            { fraseIncompleta: "El astronauta lleva un _____ espacial.", opciones: ["casco", "kasco", "cazco"], correcta: "casco", pista: "Se escribe con C inicial y S en medio.", regla: "¡Excelente! Se escribe con C y S." }
+        ];
+
+        let bancoPreguntasMezclado = [];
+        let nivelActual = 0;
+        let puntos = 0;
+        let vidas = 3;
+        let tiempoRestante = 25;
+        let temporizador = null;
+        let tiempoMaximo = 25;
+
+        function mezclarArreglo(arreglo) {
+            return [...arreglo].sort(() => Math.random() - 0.5);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            comprobarTrofeos();
+            if (localStorage.getItem("juego_marciano_completado") === "true") {
+                restaurarJuegoCompletado();
+            } else {
+                iniciarJuegoNuevo();
+            }
+        });
+
+        function restaurarJuegoCompletado() {
+            document.getElementById("zona-juego").classList.add("juego-completado");
+            const encabezado = document.getElementById("encabezado-dinamico");
+            encabezado.className = "encabezado-juego completado-texto";
+            encabezado.innerHTML = "✅ JUEGO COMPLETADO";
+            document.getElementById("alien-avatar").innerText = "🏆";
+            document.getElementById("mensaje-alien").innerText = "¡Misión completada con éxito!";
+            document.getElementById("contenedor-opciones").innerHTML = "";
+            document.getElementById("btn-pista-juego").disabled = true;
+
+            const feedback = document.getElementById("caja-feedback");
+            feedback.className = "caja-retroalimentacion correcta";
+            feedback.innerHTML = "🎉 Ya ganaste esta misión y tus retos están a salvo. Si deseas seguir practicando, presiona <b>🔄 Reintentar</b>.";
+            feedback.style.display = "block";
+            document.getElementById("barra-tiempo").style.width = "100%";
+        }
+
+        function construirEncabezado() {
+            const encabezado = document.getElementById("encabezado-dinamico");
+            encabezado.className = "encabezado-juego";
+            encabezado.innerHTML = `
+                <span>Nivel: <span id="txt-nivel">${nivelActual + 1}</span> / <span id="txt-total-niveles">${bancoPreguntasMezclado.length}</span></span>
+                <span>Vidas: <span id="txt-vidas">❤️❤️❤️</span></span>
+                <span>⭐ Puntos: <span id="txt-puntos">${puntos}</span></span>
+                <span>⏱️ Tiempo: <span id="txt-tiempo">${tiempoRestante}</span>s</span>
+            `;
+            actualizarVidasUI();
+        }
+
+        function iniciarJuegoNuevo() {
+            bancoPreguntasMezclado = mezclarArreglo(bancoBasePreguntas);
+            nivelActual = 0;
+            puntos = 0;
+            vidas = 3;
+            document.getElementById("zona-juego").classList.remove("juego-completado");
+            document.getElementById("caja-feedback").style.display = "none";
+            construirEncabezado();
+            iniciarNivel();
+        }
+
+        function actualizarVidasUI() {
+            const vidasContenedor = document.getElementById("txt-vidas");
+            if (vidasContenedor) vidasContenedor.innerText = vidas > 0 ? "❤️".repeat(vidas) : "💀";
+        }
+
+        function iniciarNivel() {
+            if (nivelActual >= bancoPreguntasMezclado.length) {
+                completarJuego();
+                return;
+            }
+
+            const datos = bancoPreguntasMezclado[nivelActual];
+            const txtNivel = document.getElementById("txt-nivel");
+            if(txtNivel) txtNivel.innerText = nivelActual + 1;
+            document.getElementById("mensaje-alien").innerText = `"${datos.fraseIncompleta}"`;
+            document.getElementById("caja-feedback").style.display = "none";
+            document.getElementById("alien-avatar").innerText = "👽";
+            document.getElementById("btn-pista-juego").disabled = false;
+
+            const contenedorOpciones = document.getElementById("contenedor-opciones");
+            contenedorOpciones.innerHTML = "";
+            const opcionesAleatorias = mezclarArreglo(datos.opciones);
+            opcionesAleatorias.forEach((opcionTexto) => {
+                const boton = document.createElement("button");
+                boton.className = "btn-opcion-palabra";
+                boton.innerText = opcionTexto;
+                boton.onclick = (e) => verificarRespuesta(opcionTexto, e.target);
+                contenedorOpciones.appendChild(boton);
+            });
+
+            tiempoMaximo = Math.max(12, 25 - (nivelActual * 1.5));
+            tiempoRestante = Math.round(tiempoMaximo);
+            actualizarBarraTiempo();
+            iniciarTemporizador();
+        }
+
+        function iniciarTemporizador() {
+            clearInterval(temporizador);
+            temporizador = setInterval(() => {
+                tiempoRestante--;
+                const txtTiempo = document.getElementById("txt-tiempo");
+                if(txtTiempo) txtTiempo.innerText = tiempoRestante;
+                actualizarBarraTiempo();
+                if (tiempoRestante <= 0) {
+                    clearInterval(temporizador);
+                    descontarVida("⏱️ ¡Se acabó el tiempo!");
+                }
+            }, 1000);
+        }
+
+        function actualizarBarraTiempo() {
+            const porcentaje = (tiempoRestante / tiempoMaximo) * 100;
+            const barra = document.getElementById("barra-tiempo");
+            barra.style.width = `${porcentaje}%`;
+            if (porcentaje < 30) barra.style.backgroundColor = "#ef4444";
+            else if (porcentaje < 60) barra.style.backgroundColor = "#f59e0b";
+            else barra.style.backgroundColor = "#10b981";
+        }
+
+        function verificarRespuesta(palabraSeleccionada, botonPresionado) {
+            const datos = bancoPreguntasMezclado[nivelActual];
+            if (palabraSeleccionada === datos.correcta) {
+                clearInterval(temporizador);
+                tocarSonido('acierto');
+                puntos += 20;
+                const txtPuntos = document.getElementById("txt-puntos");
+                if(txtPuntos) txtPuntos.innerText = puntos;
+                document.getElementById("alien-avatar").innerText = "🛸";
+                desactivarOpciones();
+                mostrarFeedback(true, datos.regla);
+                nivelActual++;
+                setTimeout(iniciarNivel, 2300);
+            } else {
+                botonPresionado.disabled = true;
+                descontarVida("❌ ¡Respuesta incorrecta!");
+            }
+        }
+
+        function descontarVida(motivo) {
+            vidas--;
+            actualizarVidasUI();
+            if (vidas <= 0) perderJuego(`${motivo} Te has quedado sin vidas.`);
+            else {
+                tocarSonido('error');
+                document.getElementById("alien-avatar").innerText = "💥";
+                mostrarFeedback(false, `${motivo} Perdiste 1 vida.`);
+            }
+        }
+
+        function perderJuego(mensaje) {
+            clearInterval(temporizador);
+            tocarSonido('error');
+            document.getElementById("alien-avatar").innerText = "💀";
+            document.getElementById("mensaje-alien").innerText = "¡MISIÓN FALLIDA!";
+            document.getElementById("btn-pista-juego").disabled = true;
+            desactivarOpciones();
+            mostrarFeedback(false, `💔 <b>¡JUEGO TERMINADO!</b> ${mensaje}`);
+        }
+
+        function desactivarOpciones() {
+            document.querySelectorAll(".btn-opcion-palabra").forEach(btn => btn.disabled = true);
+        }
+
+        function usarPista() {
+            const feedback = document.getElementById("caja-feedback");
+            feedback.className = "caja-retroalimentacion incorrecta";
+            feedback.innerHTML = `💡 <b>Pista:</b> ${bancoPreguntasMezclado[nivelActual].pista}`;
+            feedback.style.display = "block";
+        }
+
+        function mostrarFeedback(esCorrecto, mensaje) {
+            const feedback = document.getElementById("caja-feedback");
+            feedback.className = `caja-retroalimentacion ${esCorrecto ? 'correcta' : 'incorrecta'}`;
+            feedback.innerHTML = mensaje;
+            feedback.style.display = "block";
+        }
+
+        function reintentarJuego() {
+            clearInterval(temporizador);
+            iniciarJuegoNuevo();
+            comprobarTrofeos(); 
+        }
+
+        function completarJuego() {
+            clearInterval(temporizador);
+            tocarSonido('victoria');
+            document.getElementById("zona-juego").classList.add("juego-completado");
+            const encabezado = document.getElementById("encabezado-dinamico");
+            encabezado.className = "encabezado-juego completado-texto";
+            encabezado.innerHTML = "✅ JUEGO COMPLETADO";
+            document.getElementById("alien-avatar").innerText = "🏆";
+            document.getElementById("mensaje-alien").innerText = "¡Excelente ortografía!";
+            document.getElementById("contenedor-opciones").innerHTML = "";
+            document.getElementById("btn-pista-juego").disabled = true;
+            mostrarFeedback(true, "🎉 ¡Felicidades! Superaste la misión.");
+
+            localStorage.setItem("trofeo_alien_completado", "true");
+            localStorage.setItem("juego_marciano_completado", "true"); 
+            if (puntos >= 100) {
+                localStorage.setItem("trofeo_velocidad_completado", "true");
+            }
+            comprobarTrofeos();
+        }
+
+        function comprobarTrofeos() {
+            let contadorTrofeos = 0;
+            if (localStorage.getItem("modulo1_completado") === "true" || sessionStorage.getItem("modulo1_completado") === "true") {
+                document.getElementById("trofeo-mod1").classList.add("desbloqueado");
+                contadorTrofeos++;
+            } else document.getElementById("trofeo-mod1").classList.remove("desbloqueado");
+
+            if (localStorage.getItem("trofeo_alien_completado") === "true") {
+                document.getElementById("trofeo-alien").classList.add("desbloqueado");
+                contadorTrofeos++;
+            } else document.getElementById("trofeo-alien").classList.remove("desbloqueado");
+
+            if (localStorage.getItem("trofeo_velocidad_completado") === "true") {
+                document.getElementById("trofeo-velocidad").classList.add("desbloqueado");
+                contadorTrofeos++;
+            } else document.getElementById("trofeo-velocidad").classList.remove("desbloqueado");
+
+            document.getElementById("contador-trofeos").innerText = contadorTrofeos;
+
+            // Alerta a la página principal que los 3 retos están listos
+            if (contadorTrofeos === 3) {
+                localStorage.setItem("retos_marciano_completos", "true");
+            } else {
+                localStorage.setItem("retos_marciano_completos", "false");
+            }
+        }
+    </script>
+</body>
+</html>

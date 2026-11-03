@@ -1,0 +1,356 @@
+/* ==========================================
+   TEMA: ISLA PIRATA Y COFRE DEL TESORO
+   ========================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #271c12, #140d08, #2a1b0c);
+    color: #fef3c7;
+    min-height: 100vh;
+}
+
+.hero-tesoro {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #78350f, #451a03, #291b0f);
+    color: #fde68a;
+    text-align: center;
+    padding: 45px 20px;
+    border-bottom: 4px solid #f59e0b;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tesoro h1 {
+    font-size: 2.4rem;
+    margin: 0 0 8px 0;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero-tesoro p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #fef08a;
+}
+
+/* Lluvia de Emojis de Tesoro */
+#lluvia-tesoro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.item-cayendo-tesoro {
+    position: absolute;
+    top: -40px;
+    opacity: 0.8;
+    animation: caidaLluviaTesoro linear forwards;
+    user-select: none;
+}
+
+@keyframes caidaLluviaTesoro {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(220px) rotate(360deg); opacity: 0; }
+}
+
+.contenido-tesoro {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+.navegacion-superior {
+    margin-bottom: 20px;
+}
+
+.boton-volver {
+    color: #f59e0b;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.boton-volver:hover {
+    text-decoration: underline;
+}
+
+/* HUD con estética de cofre y madera */
+.hud-juego {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #2b1708;
+    border: 3px solid #b45309;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #fef3c7;
+    margin-bottom: 20px;
+}
+
+.hud-datos-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#temporizador { color: #f59e0b; }
+#contador-vidas { color: #f43f5e; letter-spacing: 2px; }
+.marcador-tesoros { color: #38bdf8; }
+
+.contenedor-tiempo-tesoro {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    height: 12px;
+    overflow: hidden;
+    border: 1px solid #78350f;
+}
+
+.barra-tiempo-tesoro {
+    height: 100%;
+    width: 100%;
+    background: #f59e0b;
+    transition: width 1s linear, background-color 0.3s;
+    border-radius: 8px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* MARCO DEL TESORO (ESTILO MADERA Y ORO) */
+.marco-tesoro {
+    background: #1e140c;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    border: 4px solid #d97706;
+    overflow: hidden;
+}
+
+.techo-tesoro {
+    background: linear-gradient(135deg, #451a03, #2b1708);
+    border-bottom: 3px solid #d97706;
+    padding: 12px 20px;
+    text-align: center;
+    color: #fde68a;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+}
+
+.zona-juego-tesoro {
+    padding: 30px 25px;
+    background: #140d08;
+    text-align: center;
+}
+
+.pantalla-inicio-tesoro h3 {
+    color: #fde68a;
+    font-size: 1.6rem;
+    margin-top: 0;
+}
+
+.instruccion-tesoro {
+    color: #d1d5db;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.reglas-caja-tesoro {
+    background: #271c12;
+    border: 2px dashed #b45309;
+    padding: 18px 22px;
+    border-radius: 14px;
+    text-align: left;
+    margin: 20px auto;
+    max-width: 480px;
+    color: #fef3c7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.reglas-caja-tesoro p { margin: 6px 0; }
+
+.btn-comenzar-animado {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 16px 36px;
+    border: 3px solid #fef08a;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(217, 119, 6, 0.5);
+    margin-top: 15px;
+    animation: latidoBoton 2s infinite ease-in-out;
+    transition: all 0.3s ease;
+}
+
+.btn-comenzar-animado:hover {
+    transform: scale(1.08) translateY(-4px);
+    background: linear-gradient(135deg, #b45309, #78350f);
+    animation: none;
+}
+
+@keyframes latidoBoton {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+}
+
+/* CAJA DE PALABRA ESTILO MONEDA / COFRE */
+.caja-palabra-tesoro {
+    background: linear-gradient(135deg, #fef08a, #fde047);
+    border: 3px solid #ca8a04;
+    padding: 22px;
+    border-radius: 16px;
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: #713f12;
+    margin: 20px auto;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(202, 138, 4, 0.3), inset 0 2px 6px rgba(255,255,255,0.9);
+}
+
+.lista-opciones-tesoro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-opcion-tesoro {
+    background: #2b1708;
+    border: 2px solid #78350f;
+    color: #fef3c7;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.btn-opcion-tesoro:hover {
+    background: #451a03;
+    border-color: #f59e0b;
+    transform: translateY(-4px);
+}
+
+.btn-opcion-tesoro.correcto {
+    background: rgba(16, 185, 129, 0.3) !important;
+    border-color: #10b981 !important;
+    color: #34d399 !important;
+}
+
+.btn-opcion-tesoro.incorrecto {
+    background: rgba(239, 68, 68, 0.3) !important;
+    border-color: #ef4444 !important;
+    color: #f87171 !important;
+}
+
+.mensaje-alerta-tesoro {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-height: 28px;
+    text-align: center;
+}
+
+.seccion-retos-tesoro {
+    margin-top: 35px;
+    background: #1e140c;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 2px solid #78350f;
+}
+
+.seccion-retos-tesoro h3 {
+    margin-top: 0;
+    color: #f59e0b;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #78350f;
+    padding-bottom: 10px;
+}
+
+.tarjetas-retos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.tarjeta-reto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #140d08;
+    border: 2px solid #78350f;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.icono-reto {
+    font-size: 2.2rem;
+    background: #2b1708;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.tarjeta-reto h4 { margin: 0 0 4px 0; font-size: 1rem; color: #fef3c7; }
+.tarjeta-reto p { margin: 0 0 8px 0; font-size: 0.85rem; color: #d1d5db; }
+
+.status-pendiente {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.btn-accion-tesoro {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 20px auto 0 auto;
+    background: #f59e0b;
+    color: #140d08;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.btn-accion-tesoro:hover { transform: scale(1.04); }
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+}

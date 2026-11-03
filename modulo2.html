@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Las señales de la lectura</title>
+    <!-- Vinculamos su propia hoja de estilos separada -->
+    <link rel="stylesheet" href="estilos_MODULO2.CSS">
+</head>
+<body>
+
+    <header class="hero-modulo">
+        <h1>🛑 Módulo 2: Las señales de la lectura</h1>
+        <p>Descubre cómo el punto y la coma organizan nuestras ideas y cambian el sentido de lo que dices.</p>
+    </header>
+
+    <main class="contenido-lectura">
+        <a href="index.html" class="boton-volver">⬅️ Volver al Inicio</a>
+        
+        <!-- Reproductor de video local optimizado y responsivo -->
+        <div class="video-aprendizaje" style="text-align: center; margin: 25px auto; max-width: 750px; width: 100%;">
+            <video controls style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 8px 25px rgba(0,0,0,0.35); background: #000;">
+                <source src="videos/EL PUNTO y LA COMA.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </div>
+
+        <section class="regla-ortografica">
+            <h2>🚀 Las señales del camino</h2>
+            <p>Así como las señales de tránsito nos indican cuándo parar o reducir la velocidad, los signos de puntuación organizan el texto para que con claridad entendamos el mensaje:</p>
+            
+            <hr>
+
+            <h3>1. El Poder de la Coma (,) ⚡</h3>
+            <p>La coma indica una pausa <strong>breve</strong> dentro de la oración.</p>
+            <blockquote>
+                <strong>Usos principales:</strong> Para enumerar elementos o hacer aclaraciones.<br>
+                <em>Ejemplos:</em> 
+                Fui a la tienda y compré peras, manzanas<strong>,</strong> bananos y uvas.<br>
+                "Vamos a comer<strong>,</strong> abuela." (¡Estás invitando a comer a tu abuela y le salvas la vida! 🍽️)
+            </blockquote>
+
+            <h3>2. El Freno del Punto (.) 🐢</h3>
+            <p>El punto indica una pausa <strong>mayor</strong>, cerrando una idea por completo.</p>
+            <blockquote>
+                <strong>Tipos de puntos:</strong><br>
+                • <strong>Punto y seguido:</strong> Separa oraciones de un mismo tema en un párrafo.<br>
+                • <strong>Punto y aparte:</strong> Separa párrafos con ideas diferentes.<br>
+                • <strong>Punto final:</strong> Cierra el texto por completo.
+            </blockquote>
+
+            <h3>3. La Pausa de los Signos (¿? ¡!) 👑</h3>
+            <p>Le dan la entonación exacta a lo que leemos.</p>
+            <blockquote>
+                <strong>Regla:</strong> Los signos de interrogación (¿?) se usan para preguntar, y los de exclamación (¡!) para expresar emociones fuertes como alegría, sorpresa o enojo.<br>
+                <em>Ejemplos:</em> ¿Cómo te llamas? / ¡Qué gran aventura!
+            </blockquote>
+        </section>
+
+        <!-- Botón para iniciar el juego interactivo con nuevo estilo -->
+        <div style="text-align: center; margin-top: 40px;">
+            <button id="btn-iniciar-m2" onclick="mostrarJuegoM2()">🚦 ¡Iniciar el Semáforo de Signos! 🚦</button>
+        </div>
+
+        <!-- Zona del Juego Interactivo -->
+        <div id="contenedor-juego-m2" class="zona-juego" style="display: none;">
+            <div class="pantalla-juego">
+                <div class="info-juego" style="margin-left: 0;">
+                    <h3>Reto <span id="num-reto-m2">1</span> de <span id="total-retos-m2">4</span></h3>
+                    <p class="instruccion">Elige el signo de puntuación correcto para reparar la carretera de la oración.</p>
+                </div>
+            </div>
+
+            <div id="frase-juego-m2" class="frase-letras" style="font-size: 1.3rem;"></div>
+
+            <div id="opciones-signos" class="herramientas-juego"></div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="boton-verificar" onclick="verificarRespuestaM2()">Comprobar Signo ✔️</button>
+            </div>
+            
+            <p id="mensaje-juego-m2" class="mensaje-alerta"></p>
+        </div>
+
+        <!-- Archivo JavaScript con la lógica del juego -->
+        <script src="juego_modulo2.js"></script>
+    </main>
+
+    <footer>
+        <p>Proyecto de Grado - Módulo 2</p>
+    </footer>
+
+    <!-- SCRIPT CORREGIDO: Redirige directamente sin alerta -->
+    <script>
+        function completarModulo2() {
+            localStorage.setItem("modulo2_completado", "true");
+            window.location.href = "index.html"; // Redirección directa e inmediata
+        }
+    </script>
+
+</body>
+</html>

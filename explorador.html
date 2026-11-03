@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Explorador de la Selva - Vocabulario</title>
+    <link rel="stylesheet" href="estilos_explorador.css">
+</head>
+<body>
+
+    <header class="hero-explorador">
+        <!-- Lluvia de emojis de selva (palmeras, bananas, arbustos) -->
+        <div id="lluvia-selva"></div>
+
+        <div class="hero-content">
+            <h1>🌴 El Explorador de la Selva</h1>
+            <p>Domina los sinónimos y antónimos para descifrar los acertijos del templo antiguo.</p>
+        </div>
+    </header>
+
+    <main class="contenido-explorador">
+        <div class="navegacion-superior">
+            <a href="index.html" class="boton-volver">⬅️ Volver al Inicio</a>
+        </div>
+
+        <!-- HUD con Vidas, Reloj, Desafíos y Barra de Tiempo Visual -->
+        <div class="hud-juego oculto" id="hud-juego-container">
+            <div class="hud-datos-fila">
+                <span id="contador-vidas">Vidas: 💖💖💖</span>
+                <span id="temporizador">⏱️ 15s</span>
+                <span class="marcador-casos">Desafío <span id="num-caso">1</span>/<span id="total-casos">9</span></span>
+            </div>
+            <!-- Barra de Tiempo Visual (Estilo Marciano) -->
+            <div class="contenedor-tiempo-selva">
+                <div class="barra-tiempo-selva" id="barra-tiempo-selva"></div>
+            </div>
+        </div>
+
+        <!-- ESTRUCTURA DEL TEMPLO MÍSTICO -->
+        <div class="marco-templo-antiguo">
+            <!-- Techo / Frontón del Templo -->
+            <div class="techo-templo">
+                <span class="antorcha">🔥</span>
+                <div class="fronton-texto">🏛️ TEMPLO DEL VOCABULARIO 🗿</div>
+                <span class="antorcha">🔥</span>
+            </div>
+
+            <!-- Columnas laterales y contenido -->
+            <div class="cuerpo-templo">
+                <div class="columna-izquierda"></div>
+                
+                <div class="zona-juego-explorador" id="contenedor-juego-explorador">
+                    <div class="pantalla-templo">
+                        <div class="info-templo">
+                            <h3>📜 Manual de Expedición</h3>
+                            <p class="instruccion-templo">
+                                Bienvenido a las ruinas sagradas. Pon a prueba tu agilidad mental con <b>sinónimos y antónimos</b> en 9 desafíos.
+                            </p>
+                            <div class="reglas-caja">
+                                <p>💖 Tienes <b>3 vidas</b> para toda la aventura.</p>
+                                <p>🛡️ Consigue una racha de <b>3 aciertos seguidos</b> para ganar un <b>Escudo de Corazones</b>.</p>
+                                <p>⏱️ Tienes <b>15 segundos</b> con barra de progreso por cada altar.</p>
+                            </div>
+                        </div>
+                        <button onclick="comenzarExpedicionReal()" class="btn-comenzar-animado">
+                            🌿 ¡Entrar al Templo! 🌿
+                        </button>
+                    </div>
+                </div>
+
+                <div class="columna-derecha"></div>
+            </div>
+
+            <!-- Base de Escalones de Piedra -->
+            <div class="escalones-base">
+                <div class="escalon e-1"></div>
+                <div class="escalon e-2"></div>
+            </div>
+        </div>
+
+        <!-- Sección de Retos / Insignias -->
+        <section class="seccion-retos-explorador">
+            <h3>🎯 Logros de Expedición</h3>
+            <div class="tarjetas-retos-grid">
+                <div class="tarjeta-reto" id="tarjeta-reto-experto">
+                    <div class="icono-reto">🌿</div>
+                    <div>
+                        <h4>Expedición Legendaria</h4>
+                        <p>Completa la selva sin perder ninguna vida.</p>
+                        <span id="status-experto" class="status-pendiente">⏳ Pendiente</span>
+                    </div>
+                </div>
+                <div class="tarjeta-reto" id="tarjeta-reto-veloz">
+                    <div class="icono-reto">⚡</div>
+                    <div>
+                        <h4>Caminante Veloz</h4>
+                        <p>Supera todos los templos sin que se agote el tiempo.</p>
+                        <span id="status-veloz" class="status-pendiente">⏳ Pendiente</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto de Grado - Minijuego: El Explorador de la Selva</p>
+    </footer>
+
+    <script src="juego_explorador.js"></script>
+</body>
+</html>

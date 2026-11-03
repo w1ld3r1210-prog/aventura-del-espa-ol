@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura del Español - 6° Grado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div id="lluvia-letras"></div>
+
+        <div class="hero-content">
+            <h1>🎒 ¡Aventura del Español!</h1>
+            <p>Aprende ortografía, puntuación y gramática de forma divertida y sin aburrirte.</p>
+        </div>
+    </header>
+
+    <div class="barra-estadisticas">
+        <div class="caja-dato">
+            <span class="num">📚 3</span>
+            <span>Módulos Interactivos</span>
+        </div>
+        <div class="caja-dato">
+            <span class="num" id="contador-logros">🏆 0</span>
+            <span>Trofeos Conseguidos</span>
+        </div>
+        <!-- Botón que lleva a la página de retos -->
+        <a href="retos.html" class="caja-dato" style="text-decoration: none; color: inherit; cursor: pointer; background-color: #f8fafc; border: 2px dashed #94a3b8; transition: transform 0.2s;">
+            <span class="num">🎯 Ver</span>
+            <span style="font-weight: bold; color: #475569;">Lista de Retos</span>
+        </a>
+    </div>
+
+    <div class="seccion-mascota">
+        <div class="avatar-mascota">🦉</div>
+        <div class="mensaje-mascota">
+            <h3>¡Hola, explorador(a) de las letras!</h3>
+            <p>Soy <b>Lulo el Búho</b>. <span id="texto-maquina"></span><span class="cursor-maquina">|</span></p>
+        </div>
+    </div>
+
+    <main class="contenedor-modulos">
+        
+        <div id="tarjeta-mod-1" class="tarjeta-modulo">
+            <div class="icono">📍</div>
+            <h3>Módulo 1: El mapa de los acentos</h3>
+            <p>Aprende a dominar las tildes, palabras agudas, graves, esdrújulas y la tilde diacrítica.</p>
+            <a href="modulo1.html" class="boton">¡Empezar Viaje!</a>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div id="tarjeta-mod-2" class="tarjeta-modulo">
+            <div class="icono">🛑</div>
+            <h3>Módulo 2: Las señales de la lectura</h3>
+            <p>Descubre el poder de la coma, el punto y cómo los signos cambian el sentido de lo que dices.</p>
+            <a href="modulo2.html" class="boton">¡Explorar!</a>
+        </div>
+
+        <!-- Módulo 3 (Test / Rascacielos) -->
+        <div id="tarjeta-mod-3" class="tarjeta-modulo">
+            <div class="icono">🏗️</div>
+            <h3>Módulo 3: Constructores de oraciones</h3>
+            <p>Conviértete en un experto combinando sustantivos, verbos y adjetivos de manera exacta.</p>
+            <a href="modulo3.html" class="boton">¡Construir!</a>
+        </div>
+
+        <!-- JUEGO 1: EL MARCIANO -->
+        <div id="tarjeta-juego-marciano" class="tarjeta-modulo" style="background: linear-gradient(135deg, #1e1b4b, #312e81); color: #ffffff; border: 2px solid #818cf8; text-align: center;">
+            <div class="icono" style="font-size: 3.5rem; margin-bottom: 5px;">👽</div>
+            <h3 style="color: #ffffff; margin-top: 5px;">Misión Alienígena: El Juego del Marciano</h3>
+            <p style="color: #e2e8f0; font-size: 0.95rem;">Ayuda a nuestro amigo extraterrestre a reparar su nave resolviendo preguntas de tildes y ortografía antes de que se agote el tiempo.</p>
+            <a href="juegos.html" class="boton" style="background-color: #f59e0b; color: #ffffff; font-weight: bold;">🚀 ¡Jugar Ahora!</a>
+        </div>
+
+        <!-- JUEGO 2: EL ESCÁNER DETECTIVE -->
+        <div id="tarjeta-juego-detective" class="tarjeta-modulo" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: #ffffff; border: 2px solid #38bdf8; text-align: center;">
+            <div class="icono" style="font-size: 3.5rem; margin-bottom: 5px;">🔍</div>
+            <h3 style="color: #38bdf8; margin-top: 5px;">El Escáner Detective</h3>
+            <p style="color: #94a3b8; font-size: 0.95rem;">Encuentra las oraciones perfectas combinando tildes, mayúsculas y puntuación. ¡Pasa el filtro ortográfico!</p>
+            <a href="detective.html" class="boton" style="background-color: #38bdf8; color: #0f172a; font-weight: bold;">🎮 ¡Jugar Ahora!</a>
+        </div>
+
+        <!-- JUEGO 3: EL EXPLORADOR DE LA SELVA -->
+        <div id="tarjeta-juego-explorador" class="tarjeta-modulo" style="background: linear-gradient(135deg, #065f46, #047857); color: #ffffff; border: 2px solid #34d399; text-align: center;">
+            <div class="icono" style="font-size: 3.5rem; margin-bottom: 5px;">🌴</div>
+            <h3 style="color: #a7f3d0; margin-top: 5px;">El Explorador de la Selva</h3>
+            <p style="color: #d1fae5; font-size: 0.95rem;">Domina los sinónimos y antónimos descifrando los acertijos del templo antiguo. ¡Supera los desafíos de la expedición!</p>
+            <a href="explorador.html" class="boton" style="background-color: #10b981; color: #ffffff; font-weight: bold;">🌿 ¡Jugar Ahora!</a>
+        </div>
+
+        <!-- JUEGO 4: EL COFRE DEL TESORO ORTOGRÁFICO (ESTILO PIRATA) -->
+        <div id="tarjeta-juego-tesoro" class="tarjeta-modulo" style="background: linear-gradient(135deg, #451a03, #271c12); color: #fef3c7; border: 2px solid #f59e0b; text-align: center;">
+            <div class="icono" style="font-size: 3.5rem; margin-bottom: 5px;">🪙</div>
+            <h3 style="color: #fde68a; margin-top: 5px;">El Cofre del Tesoro Ortográfico</h3>
+            <p style="color: #d1d5db; font-size: 0.95rem;">Clasifica palabras agudas, graves y esdrújulas para abrir el cofre sagrado del templo pirata.</p>
+            <a href="tesoro.html" class="boton" style="background-color: #d97706; color: #ffffff; font-weight: bold;">🏴‍☠️ ¡Jugar Ahora!</a>
+        </div>
+
+        <!-- JUEGO 5: EL GUARDIÁN DE LOS SIGNOS (ESTILO ARCANO / MÍSTICO) -->
+        <div id="tarjeta-juego-guardian" class="tarjeta-modulo" style="background: linear-gradient(135deg, #3b0764, #140826); color: #f3e8ff; border: 2px solid #a855f7; text-align: center;">
+            <div class="icono" style="font-size: 3.5rem; margin-bottom: 5px;">🛡️</div>
+            <h3 style="color: #e9d5ff; margin-top: 5px;">El Guardián de los Signos</h3>
+            <p style="color: #cbd5e1; font-size: 0.95rem;">Domina la tilde diacrítica y el poder de las comas y los puntos en este desafío definitivo.</p>
+            <a href="guardian.html" class="boton" style="background-color: #9333ea; color: #ffffff; font-weight: bold;">⚡ ¡Jugar Ahora!</a>
+        </div>
+
+    </main>
+
+    <div class="caja-dato-curioso">
+        <h4>💡 ¿Sabías que...?</h4>
+        <p>La palabra <b>"reconocer"</b> se lee igual de izquierda a derecha que de derecha a izquierda. A este tipo de palabras se les conoce como <i>palíndromos</i>. ¡Impresiona a tus compañeros con este dato!</p>
+    </div>
+
+    <div style="text-align: center; margin: 30px 0 20px 0;">
+        <button onclick="reiniciarProgreso()" style="background-color: #e74c3c; color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+            🔄 Nuevo Estudiante (Reiniciar Progreso)
+        </button>
+    </div>
+
+    <footer>
+        <p>Proyecto de Grado - Creado con 💻 para estudiantes de 6.°</p>
+    </footer>
+
+    <script src="index_logica.js"></script>
+</body>
+</html>

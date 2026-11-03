@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Guardián de los Signos - Módulos 1 y 2</title>
+    <link rel="stylesheet" href="estilos_guardian.css">
+</head>
+<body>
+
+    <header class="hero-guardian">
+        <div class="hero-content">
+            <h1>🛡️ El Guardián de los Signos</h1>
+            <p>Domina los misterios de la tilde diacrítica (Módulo 1) y las señales de puntuación y comas (Módulo 2).</p>
+        </div>
+    </header>
+
+    <main class="contenido-guardian">
+        <div class="navegacion-superior">
+            <a href="index.html" class="boton-volver">⬅️ Volver al Inicio</a>
+        </div>
+
+        <!-- HUD con Vidas, Reloj, Desafíos y Barra de Tiempo Visual -->
+        <div class="hud-juego oculto" id="hud-juego-container">
+            <div class="hud-datos-fila">
+                <span id="contador-vidas">Vidas: 💖💖💖</span>
+                <span id="temporizador">⏱️ 15s</span>
+                <span class="marcador-retos">Misión <span id="num-mision">1</span>/<span id="total-misiones">8</span></span>
+            </div>
+            <!-- Barra de Tiempo Visual -->
+            <div class="contenedor-tiempo-guardian">
+                <div class="barra-tiempo-guardian" id="barra-tiempo-guardian"></div>
+            </div>
+        </div>
+
+        <!-- ESTRUCTURA DEL TEMPLO DEL GUARDIÁN -->
+        <div class="marco-guardian">
+            <div class="techo-guardian">
+                <span>⚡ SALÓN DE DIACRÍTICA Y PUNTUACIÓN ⚡</span>
+            </div>
+
+            <div class="zona-juego-guardian" id="contenedor-juego-guardian">
+                <div class="pantalla-inicio-guardian">
+                    <h3>📜 Decreto del Guardián</h3>
+                    <p class="instruccion-guardian">
+                        Para pasar este juicio debes demostrar tu dominio sobre la <b>tilde diacrítica</b> y el uso correcto de las <b>comas y los puntos</b> en las lecturas.
+                    </p>
+                    <div class="reglas-caja-guardian">
+                        <p>💖 Tienes <b>3 vidas</b> para toda la prueba.</p>
+                        <p>🛡️ Consigue una racha de <b>3 aciertos seguidos</b> para activar un <b>Escudo de Corazones</b>.</p>
+                        <p>⏱️ Tienes <b>15 segundos</b> por cada desafío.</p>
+                    </div>
+                    <button onclick="comenzarGuardian()" class="btn-comenzar-animado">
+                        ⚡ ¡Aceptar el Juicio! ⚡
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insignias / Logros del Guardián -->
+        <section class="seccion-retos-guardian">
+            <h3>🎯 Logros del Guardián</h3>
+            <div class="tarjetas-retos-grid">
+                <div class="tarjeta-reto" id="tarjeta-reto-sabio">
+                    <div class="icono-reto">📜</div>
+                    <div>
+                        <h4>Sabio Supremo</h4>
+                        <p>Completa el juicio sin perder ninguna vida.</p>
+                        <span id="status-sabio" class="status-pendiente">⏳ Pendiente</span>
+                    </div>
+                </div>
+                <div class="tarjeta-reto" id="tarjeta-reto-agudo">
+                    <div class="icono-reto">⚡</div>
+                    <div>
+                        <h4>Juicio Veloz</h4>
+                        <p>Supera todas las misiones sin que se agote el tiempo.</p>
+                        <span id="status-agudo" class="status-pendiente">⏳ Pendiente</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto de Grado - Minijuego: El Guardián de los Signos</p>
+    </footer>
+
+    <script src="juego_guardian.js"></script>
+</body>
+</html>
